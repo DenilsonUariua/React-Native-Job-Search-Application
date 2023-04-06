@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
 import { Stack, useRouter } from "expo-router";
 
-import { COLORS, SIZES, FONTS, icons } from "../constants";
+import { COLORS, SIZES, FONTS, images, icons } from "../constants";
 import {
   Nearbyjobs,
   Popularjobs,
@@ -17,8 +17,23 @@ export default function Home() {
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
+          headerShadowVisible: true,
+          headerLeft: () => (
+            <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
+          ),
+          headerRight: () => (
+            <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+          ),
+          headerTitle: "",
         }}
       />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          <Welcome />
+          <Popularjobs />
+          <Nearbyjobs />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
