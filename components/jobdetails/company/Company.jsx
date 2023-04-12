@@ -14,12 +14,25 @@ const Company = ({ companyLogo, jobTitle, companyName, location }) => {
             uri: checkImageURL(companyLogo)
               ? companyLogo
               : "https://via.placeholder.com/150",
-          }} 
+          }}
+          resizeMode="contain"
           style={styles.logoImage}
-          />
+        />
       </View>
-      <View style={styles.textBox}>
-        
+      <View style={styles.jobTitleBox}>
+        <Text style={styles.jobTitle}>{jobTitle}</Text>
+      </View>
+
+      <View style={styles.companyInfoBox}>
+        <Text style={styles.companyName}>{companyName} / </Text>
+        <View style={styles.locationBox}>
+          <Image
+            source={icons.location}
+            style={styles.locationImage}
+            resizeMode="contain"
+          />
+          <Text style={styles.locationName}>{location}</Text>
+        </View>
       </View>
     </View>
   );
